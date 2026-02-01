@@ -1,9 +1,7 @@
 type: fleet
 name: skills-demo
 
-nodes:
-  min: 0
-  max: 1
+nodes: 0..1
 
 resources:
   gpu: 24GB..80GB:0..8

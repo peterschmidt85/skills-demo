@@ -2,3 +2,10 @@
 .envrc
 *.log
 .env
+
+# Skills directories
+.agents/skills/
+.claude/skills/
+.codex/skills/
+.cursor/skills/
+.junie/skills/
