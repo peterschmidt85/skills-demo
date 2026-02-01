@@ -1,0 +1,28 @@
+type: dev-environment
+name: cursor
+python: "3.12"
+ide: cursor
+
+env:
+  - HF_TOKEN
+  - GH_TOKEN
+
+repos:
+  - .
+
+volumes:
+  - instance_path: /dstack-cache/huggingface
+    path: /root/.cache/huggingface
+    optional: true
+  - instance_path: /dstack-cache/pip
+    path: /root/.cache/pip
+    optional: true
+  - instance_path: /mnt/data
+    path: /mnt/data
+    optional: true
+
+resources:
+  gpu: 24GB
+
+backends: [runpod]
+spot_policy: auto
