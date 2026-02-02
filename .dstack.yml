@@ -1,15 +1,29 @@
 type: dev-environment
-name: cursor
-python: "3.12"
+name: skills-demo
+
 ide: cursor
 
+python: "3.12"
+nvcc: true
 env:
   - HF_TOKEN
   - GH_TOKEN
 
+# Mount the repo (to working_dir)
 repos:
   - .
 
+init:
+  - uv pip install "sglang[diffusion]" --pre
+
+resources:
+  gpu: H100
+  memory: 124GB..
+  disk: 200GB
+
+spot_policy: auto
+
+# Add volumes to cache data
 volumes:
   - instance_path: /dstack-cache/huggingface
     path: /root/.cache/huggingface
@@ -20,9 +34,3 @@ volumes:
   - instance_path: /mnt/data
     path: /mnt/data
     optional: true
-
-resources:
-  gpu: 24GB
-
-backends: [runpod]
-spot_policy: auto
